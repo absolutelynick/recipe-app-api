@@ -155,6 +155,9 @@ This allows us to run and control the different services that we run from the ap
 Creating a django project using our docker configuration
 --------------------------------------------
 
+
+
+
 Make the project using the config from this path
 
 """
@@ -163,6 +166,38 @@ Make the project using the config from this path
 
 
 
+
+
+--------------------------------------------
+Travis CI
+--------------------------------------------
+
+
+
+Travis CI is a hosted continuous integration service used to build and test software projects hosted at GitHub. Open source projects may be tested at no charge via travis-ci.org. Private projects may be tested at travis-ci.com on a fee basis
+
+
+
+
+
+--------------------------------------------
+Running tests
+--------------------------------------------
+
+
+
+
+"""
+docker-compose run app sh -c "python manage.py test"
+
+"""
+
+Linting check
+
+"""
+docker-compose run app sh -c "python manage.py test && flake8"
+
+"""
 
 
 
