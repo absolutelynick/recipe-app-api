@@ -186,13 +186,27 @@ Running tests
 
 
 
+Calling the correct folder that we need to work with
 
 """
+
+cd "C:\Users\Nick\Dropbox\scripting\tutorials\python\udemy\django_rest_api\recipe-app-api-mine"
+
+"""
+
+    -- Running all tests that we have setup
+
+"""
+
+## Make sure you start docker in the shell or in the taskbar
+
+docker exec
+
 docker-compose run app sh -c "python manage.py test"
 
 """
 
-Linting check
+    -- Linting check along with the setup
 
 """
 docker-compose run app sh -c "python manage.py test && flake8"

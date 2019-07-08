@@ -1,5 +1,5 @@
-import uuid
-import os
+# import uuid
+# import os
 from django.db import models
 
 from django.contrib.auth.models import (
@@ -8,7 +8,7 @@ from django.contrib.auth.models import (
     PermissionsMixin
     )
 
-from django.conf import settings
+# from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -35,14 +35,16 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     """ Custom user model that supports using email instead of user-name. """
 
-    email =     models.EmailField(max_length=255, unique=True)
-    name =      models.CharField(max_length=255)
-    is_active = models.BooleanField(default=True)
-    is_staff =  models.BooleanField(default=False)
+    email = models.EmailField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
 
-    objects =   UserManager()
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
