@@ -6,7 +6,7 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    """Django command to pause execution until the database is available. """
+    """Pause execution until the database is available. """
 
     def handle(self, *args, **options):
         self.stdout.write('Waiting for database...')
@@ -16,6 +16,7 @@ class Command(BaseCommand):
             try:
                 db_conn = connections['default']
             except OperationalError:
-                self.stdout.write(f'Database unavailable, waiting for {seconds} seconds...')
+                self.stdout.write(f'Database unavailable, '
+                                  f'waiting for {seconds} seconds...')
                 time.sleep(seconds)
                 seconds += seconds

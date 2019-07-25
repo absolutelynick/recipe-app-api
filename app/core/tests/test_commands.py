@@ -23,8 +23,8 @@ class CommandTests(TestCase):
 
         with patch('django.db.utils.ConnectionHandler.__getitem__') as gi:
 
-            # Side effect will raise the operation error 5 times and let it pass
-            # on the sixth
+            # Side effect will raise the operation error
+            # 5 times and let it pass on the sixth
             gi.side_effect = [OperationalError] * 5 + [True]
             call_command('wait_for_db')
 
