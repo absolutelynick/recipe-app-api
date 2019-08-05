@@ -1,3 +1,3 @@
 # Recipe-App-API
 
-Recipe application API source code
+Django Rest-API Test Site for a Recipe Website
