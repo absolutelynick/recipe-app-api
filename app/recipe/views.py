@@ -12,7 +12,7 @@ from recipe import serializers
 class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
                             mixins.ListModelMixin,
                             mixins.CreateModelMixin):
-    """Base viewset for user owned recipe attributes"""
+    """Base view-set for user owned recipe attributes"""
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
@@ -25,6 +25,7 @@ class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
         if assigned_only:
             queryset = queryset.filter(recipe__isnull=False)
 
+        # Distinct will make sure only unique items are returned
         return queryset.filter(
             user=self.request.user
         ).order_by('-name').distinct()
