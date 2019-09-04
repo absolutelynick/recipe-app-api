@@ -54,16 +54,18 @@ class RecipeViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def _params_to_ints(self, qs):
-        """Convert a list of string IDs to a list of integers"""
+        """Convert a list of string IDs to list of integers"""
         return [int(str_id) for str_id in qs.split(',')]
 
     def get_queryset(self):
         """Retrieve the recipes for the authenticated user"""
+        # A dictionary of all the query params from the request
         tags = self.request.query_params.get('tags')
         ingredients = self.request.query_params.get('ingredients')
         queryset = self.queryset
         if tags:
             tag_ids = self._params_to_ints(tags)
+            # The double underscores filter foreign key objects
             queryset = queryset.filter(tags__id__in=tag_ids)
         if ingredients:
             ingredient_ids = self._params_to_ints(ingredients)
